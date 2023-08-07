@@ -35,6 +35,13 @@
     </td>
     <td class="{{$booking->status}} a-hidden">{{$booking->statusName}}</td>
     <td width="2%">
+
+        @if($booking->status !== 'completed' && $booking->status !== 'canceled')
+            <a class="btn btn-xs btn-primary btn-info-booking mb-1" data-toggle="modal" data-target="#edit-modal-booking-{{$booking->id}}">
+                {{__("Restructure")}}
+            </a>
+        @endif
+
         @if($service = $booking->service)
             <a class="btn btn-xs btn-primary btn-info-booking" data-toggle="modal" data-target="#modal-booking-{{$booking->id}}">
                 <i class="fa fa-info-circle"></i>{{__("Details")}}

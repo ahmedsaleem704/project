@@ -75,3 +75,57 @@
         </div>
     </div>
 </div>
+
+
+<!--edit modal-->
+<div class="modal fade" id="edit-modal-booking-{{$booking->id}}">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">{{__("Booking ID")}}: #{{$booking->id}}</h4>
+            </div>
+
+            <form action="{{url('vendor/booking-report/update')}}" method="post">
+                @csrf
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#booking-detail-{{$booking->id}}">{{__("Booking Detail")}}</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="booking-detail-{{$booking->id}}" class="tab-pane active"><br>
+                            <div class="booking-review">
+                                <div class="booking-review-content">
+                                    <div class="review-section">
+                                        <div class="info-form">
+
+                                            <input name="booking_id" type="hidden" required value="{{$booking->id}}">
+
+
+                                            <div class="form-group">
+                                                <label>Start Date</label>
+                                                <input name="start_date" type="text" class="form-control has-datepicker" required value="{{display_date($booking->start_date)}}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>End Date</label>
+                                                <input name="end_date" type="text" class="form-control has-datepicker" required value="{{display_date($booking->end_date)}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">{{__("Update")}}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
